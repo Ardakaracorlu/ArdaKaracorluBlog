@@ -1,7 +1,19 @@
+using Microsoft.AspNetCore.Mvc;
+using System.Web.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+builder.Services.AddControllersWithViews();
+builder.Services.AddSession(opts =>
+{
+    opts.IdleTimeout = TimeSpan.FromMinutes(30);
+    opts.Cookie.HttpOnly = true;
+});
+
+
 
 var app = builder.Build();
 
@@ -9,7 +21,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -17,8 +28,14 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthorization();
+app.UseSession();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Users}/{action=Index}/{id?}");
+});
 
 app.MapRazorPages();
 

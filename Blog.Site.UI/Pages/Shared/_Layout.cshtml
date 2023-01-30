@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Arda.Karacorlu</title>
 
-     <!--CSS-->
+    <!--CSS-->
     <link href="~/lib/toastr/build/toastr.min.css" rel="stylesheet" />
-@*    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Blog.UI.styles.css" asp-append-version="true" />*@
-     <!-- twitter-bootstrap-wizard css -->
+    <!-- twitter-bootstrap-wizard css -->
     <link rel="stylesheet" href="~/lib/twitter-bootstrap-wizard/prettify.css">
     <!-- Bootstrap Css -->
     <link href="~/css/bootstrap.min.css" rel="stylesheet" />
@@ -20,7 +20,7 @@
     <!-- Sweetalert2 -->
     <link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
 
-     <!-- Datatable-->
+    <!-- Datatable-->
     <link href="~/lib/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="~/lib/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" />
     <link href="~/lib/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" />
@@ -36,7 +36,7 @@
     <!-- App Css-->
     <link href="~/css/app.min.css" rel="stylesheet" />
     <link href="~/lib/print/print.min.css" rel="stylesheet" />
-     <!--JS-->
+    <!--JS-->
 
     <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -101,18 +101,31 @@
     <script src="~/js/pages/form-wizard.init.js"></script>
     <script src="~/lib/twitter-bootstrap-wizard/prettify.js"></script>
 </head>
-<body>
-    <partial name="HorizontalHeaderPartial"/>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Blog.UI - <a asp-area="" asp-page="/Privacy"></a>
+<body data-topbar="dark" data-layout="horizontal">
+    <div id="layout-wrapper">
+        <partial name="HorizontalHeaderPartial" />
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    <!-- start page title -->
+                    @RenderBody()
+                    <!-- end page title -->
+                </div> <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <script>document.write(new Date().getFullYear())</script> © A101 Bilgi Sistemleri
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-right d-none d-sm-block">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-    </footer>
 </body>
 </html>

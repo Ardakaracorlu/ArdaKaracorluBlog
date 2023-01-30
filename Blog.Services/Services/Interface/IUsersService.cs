@@ -5,5 +5,6 @@ namespace Blog.Services.Services.Interface
 {
     public interface IUsersService : IHttpClientService<ApiResponse>
     {
+        Task<ApiResponse> UsersGetList();
     }
 }

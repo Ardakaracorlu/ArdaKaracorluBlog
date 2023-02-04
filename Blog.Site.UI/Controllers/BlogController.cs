@@ -8,5 +8,9 @@ namespace Blog.Site.UI.Controllers
         {
             return View();
         }
+        public IActionResult BlogDetail()
+        {
+            return View();
+        }
     }
 }
